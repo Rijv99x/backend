@@ -24,7 +24,7 @@ export default function handler(req, res) {
       return res.status(403).send("nice try, better luck next time");
     }
 
-    const luaScript = `loadstring(game:HttpGet("https://raw.githubusercontent.com/Fsploit/Akak/main/api/loader.txt"))()`;
+    const luaScript = `loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-SECURE-DEX-AND-REMOTE-SPY-205256"))()`;
 
     res.setHeader("Content-Type", "text/plain");
     return res.status(200).send(luaScript);
