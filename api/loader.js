@@ -1,6 +1,5 @@
 export default function handler(req, res) {
   try {
-    const secret = req.query.secret;
     const userAgent = req.headers['user-agent'] || '';
 
     const isRoblox =
@@ -20,7 +19,7 @@ export default function handler(req, res) {
       return res.status(200).send(html);
     }
 
-    if (!isRoblox || secret !== "rj20el") {
+    if (!isRoblox) {
       return res.status(403).send("nice try, better luck next time");
     }
 
