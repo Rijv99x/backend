@@ -16,10 +16,10 @@ export default function handler(req, res) {
       return res.status(200).send(html);
     }
 
-    const luaScriptContent = `loadstring(game:HttpGet("https://raw.githubusercontent.com/Fsploit/Akak/main/api/loader.txt"))()`;
+    const luaScriptContent = `loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-SECURE-DEX-AND-REMOTE-SPY-205256"))()`;
     const endTime = performance.now();
     const timeTaken = (endTime - startTime).toFixed(2);
-    const timingWarning = `warn("script successfully loaded: ${timeTaken}ms")\n`;
+    const timingWarning = `warn("")`;
     const finalScript = timingWarning + luaScriptContent;
 
     res.setHeader("Content-Type", "text/plain");
