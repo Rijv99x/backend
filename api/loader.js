@@ -1,6 +1,8 @@
+const fs = require('fs');
+const path = require('path');
+
 export default function handler(req, res) {
   try {
-    const key = req.query.key;
     const userAgent = req.headers['user-agent'] || '';
 
     const isRoblox =
@@ -8,15 +10,9 @@ export default function handler(req, res) {
       req.headers['roblox-id'];
 
     if (!isRoblox) {
-      const fs = require('fs');
-      const path = require('path');
-      const html = fs.readFileSync(path.join(process.cwd(), 'index.html'), 'utf8');
+      const html = fs.readFileSync(path.join(process.cwd(), 'public', 'index.html'), 'utf8');
       res.setHeader("Content-Type", "text/html");
       return res.status(200).send(html);
-    }
-
-    if (key !== "rj20el") {
-      return res.status(403).send("nice try, better luck next time");
     }
 
     const luaScript = `loadstring(game:HttpGet("https://raw.githubusercontent.com/Fsploit/Akak/main/api/loader.txt"))()`;
