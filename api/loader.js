@@ -7,12 +7,7 @@ export default function handler(req, res) {
       userAgent.includes("Roblox") ||
       req.headers['roblox-id'];
 
-    const isBrowser =
-      userAgent.includes("Mozilla") ||
-      userAgent.includes("Chrome") ||
-      userAgent.includes("Safari");
-
-    if (isBrowser) {
+    if (!isRoblox) {
       const fs = require('fs');
       const path = require('path');
       const html = fs.readFileSync(path.join(process.cwd(), 'index.html'), 'utf8');
@@ -20,7 +15,7 @@ export default function handler(req, res) {
       return res.status(200).send(html);
     }
 
-    if (key !== "rj20el" || !isRoblox) {
+    if (key !== "rj20el") {
       return res.status(403).send("nice try, better luck next time");
     }
 
