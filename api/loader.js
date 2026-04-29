@@ -1,6 +1,3 @@
-import fs from 'fs';
-import path from 'path';
-
 export default function handler(req, res) {
   try {
     const userAgent = req.headers['user-agent'] || '';
@@ -10,7 +7,8 @@ export default function handler(req, res) {
       req.headers['roblox-id'];
 
     if (!isRoblox) {
-      const html = fs.readFileSync(path.join(process.cwd(), 'public', 'index.html'), 'utf8');
+      const fs = require('fs');
+      const html = fs.readFileSync(process.cwd() + '/index.html', 'utf8');
       res.setHeader("Content-Type", "text/html");
       return res.status(200).send(html);
     }
