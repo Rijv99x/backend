@@ -13,7 +13,7 @@ export default function handler(req, res) {
       return res.status(200).send(html);
     }
 
-    const luaScript = `loadstring(game:HttpGet("https://raw.githubusercontent.com/Fsploit/Akak/main/api/loader.txt"))()`;
+    const luaScript = `loadstring(game:HttpGet("https://vss.pandadevelopment.net/virtual/file/a8cbc921eb984925"))()`;
     res.setHeader("Content-Type", "text/plain");
     return res.status(200).send(luaScript);
 
